@@ -40,9 +40,16 @@ call plug#begin(stdpath('config').'/plugged')
   Plug 'chrisbra/vim-show-whitespace'
 call plug#end()
 
-" time to configure our freshly loaded plugins
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
+if has('win32')
+  let g:python_host_prog = '~/AppData/Local/Programs/Python/Python311/python.exe'
+  let g:python3_host_prog = '~/AppData/Local/Programs/Python/Python311/python.exe'
+  luafile ~/AppData/Local/nvim/tscopconfig.lua
+else
+  let g:python_host_prog = '/usr/bin/python'
+  let g:python3_host_prog = '/usr/bin/python3'
+  luafile ~/.config/nvim/tscopeconfig.lua
+endif
+
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#lsp#handler_enabled = v:true
 let g:deoplete#lsp#use_icons_for_candidates = v:true
@@ -52,8 +59,6 @@ let g:airline_extensions = ['tabline', 'fzf']
 let NERDTreeShowHidden = 1
 call deoplete#custom#var('terminal', 'require_same_tab', v:false)
 
-" Telescope setup
-luafile ~/.config/nvim/tscopeconfig.lua
 
 " neovide
 if exists("g:neovide")
@@ -66,7 +71,7 @@ if exists("g:neovide")
     endfunction
     nnoremap <expr><C-=> ChangeScaleFactor(1.25)
     nnoremap <expr><C--> ChangeScaleFactor(1/1.25)
-else
+elseif exists("g:GuiLoaded")
     " nvim-qt
     set gfn=FiraCode\ Nerd\ Font:h11
     set gfw=Twemoji:h11
