@@ -71,11 +71,10 @@ if exists("g:neovide")
     endfunction
     nnoremap <expr><C-=> ChangeScaleFactor(1.25)
     nnoremap <expr><C--> ChangeScaleFactor(1/1.25)
-elseif exists("g:GuiLoaded")
-    " nvim-qt
-    set gfn=FiraCode\ Nerd\ Font:h11
-    set gfw=Twemoji:h11
 endif
+" nvim-qt
+set gfn=FiraCode\ Nerd\ Font:h10
+set gfw=Twemoji:h10
 
 " key bindings
 let g:mapleader = ','
