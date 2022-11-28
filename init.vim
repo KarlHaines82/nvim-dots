@@ -85,6 +85,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " standard vim config
+set termguicolors
 colorscheme dracula
 set tabstop=4
 set shiftwidth=4
