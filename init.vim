@@ -38,14 +38,15 @@ call plug#begin(stdpath('config').'/plugged')
   Plug 'mhinz/vim-startify'
   Plug 'guns/xterm-color-table.vim'
   Plug 'chrisbra/vim-show-whitespace'
+  Plug 'dracula/vim', { 'name': 'dracula' }
 call plug#end()
 
 if has('win32')
-  let g:python_host_prog = '~/AppData/Local/Programs/Python/Python311/python.exe'
-  let g:python3_host_prog = '~/AppData/Local/Programs/Python/Python311/python.exe'
+  "let g:python_host_prog = '~/Progra~1/Python311/python.exe'
+  let g:python3_host_prog = 'python.exe'
   luafile ~/AppData/Local/nvim/tscopeconfig.lua
 else
-  let g:python_host_prog = '/usr/bin/python'
+  "let g:python_host_prog = '/usr/bin/python'
   let g:python3_host_prog = '/usr/bin/python3'
   luafile ~/.config/nvim/tscopeconfig.lua
 endif
@@ -63,7 +64,7 @@ call deoplete#custom#var('terminal', 'require_same_tab', v:false)
 " neovide
 if exists("g:neovide")
     " Put anything you want to happen only in Neovide here
-    set guifont=FiraCode_Nerd_Font,Twemoji:h9
+    set guifont=FiraCode_NF,Twemoji:h9
     let g:neovide_cursor_animation_length = 0
     let g:neovide_scale_factor=1.0
     function! ChangeScaleFactor(delta)
@@ -72,9 +73,6 @@ if exists("g:neovide")
     nnoremap <expr><C-=> ChangeScaleFactor(1.25)
     nnoremap <expr><C--> ChangeScaleFactor(1/1.25)
 endif
-" nvim-qt
-set gfn=FiraCode\ Nerd\ Font:h10
-set gfw=Twemoji:h10
 
 " key bindings
 let g:mapleader = ','
@@ -87,7 +85,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " standard vim config
-"colorscheme koehler
+colorscheme dracula
 set tabstop=4
 set shiftwidth=4
 set expandtab
