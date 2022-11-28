@@ -43,7 +43,7 @@ call plug#end()
 if has('win32')
   let g:python_host_prog = '~/AppData/Local/Programs/Python/Python311/python.exe'
   let g:python3_host_prog = '~/AppData/Local/Programs/Python/Python311/python.exe'
-  luafile ~/AppData/Local/nvim/tscopconfig.lua
+  luafile ~/AppData/Local/nvim/tscopeconfig.lua
 else
   let g:python_host_prog = '/usr/bin/python'
   let g:python3_host_prog = '/usr/bin/python3'
