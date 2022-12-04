@@ -60,18 +60,24 @@ let g:airline_extensions = ['tabline', 'fzf']
 let NERDTreeShowHidden = 1
 call deoplete#custom#var('terminal', 'require_same_tab', v:false)
 
-
 " neovide
 if exists("g:neovide")
     " Put anything you want to happen only in Neovide here
-    set guifont=FiraCode_NF,Twemoji:h9
-    let g:neovide_cursor_animation_length = 0
+    set guifont=FiraCode_NF,Twemoji:h10
+    let g:neovide_transparency = 0.85
+    let g:neovide_floating_blur_amount_x = 2.0
+    let g:neovide_floating_blur_amount_y = 2.0
+    let g:neovide_cursor_vfx_mode = "railgun"
+    let g:neovide_cursor_animation_length = 0.1
     let g:neovide_scale_factor=1.0
     function! ChangeScaleFactor(delta)
         let g:neovide_scale_factor = g:neovide_scale_factor * a:delta
     endfunction
     nnoremap <expr><C-=> ChangeScaleFactor(1.25)
     nnoremap <expr><C--> ChangeScaleFactor(1/1.25)
+else
+    set gfn=FiraCode\ Nerd\ Font:h10
+    set gfw=Twemoji:h10
 endif
 
 " key bindings
@@ -86,7 +92,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " standard vim config
 set termguicolors
-colorscheme dracula
+"colorscheme dracula
 set tabstop=4
 set shiftwidth=4
 set expandtab
