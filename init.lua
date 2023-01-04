@@ -34,7 +34,6 @@ dashboard.section.buttons.val = {
   dashboard.button( "c", "  NVIM Config" , ":e $HOME/.config/nvim/init.lua<CR>"),
   dashboard.button( "s", "  Run PackerSync" , ":ene<bar>:PackerSync<CR>"),
   dashboard.button( "q", "  Quit NVIM ", ":qa<CR>"),
-
 }
 dashboard.section.footer.val = {
   [[ ]],
