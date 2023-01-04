@@ -44,6 +44,8 @@ function(use)
     requires = 'nvim-lua/plenary.nvim' }
   use { 'norcalli/nvim-colorizer.lua' }
   use { 'ellisonleao/glow.nvim' }
+  use { 'lukas-reineke/indent-blankline.nvim' } -- Add indentation guides even on blank lines
+  use { 'numToStr/Comment.nvim' } -- "gc" to comment visual regions/lines
 
   if packer_bootstrap then
     require('packer').sync()

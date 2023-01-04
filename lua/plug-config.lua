@@ -3,7 +3,12 @@ require('nvim-tree').setup{
     width = 24,
   },
 }
-require('glow').setup{ style = 'dark' }
+require('glow').setup{
+  style = 'dark',
+  border = 'rounded',
+  width_ratio = 0.9,
+  height_ratio = 0.8,
+}
 require('lualine').setup{}
 require('kanagawa').setup({
     undercurl = true,           -- enable undercurls
@@ -17,8 +22,8 @@ require('kanagawa').setup({
     specialException = true,    -- special highlight for exception handling keywords
     transparent = true,        -- do not set background color
     dimInactive = false,        -- dim inactive window `:h hl-NormalNC`
-    globalStatus = false,       -- adjust window separators highlight for laststatus=3
-    terminalColors = false,      -- define vim.g.terminal_color_{0,17}
+    globalStatus = true,       -- adjust window separators highlight for laststatus=3
+    terminalColors = true,      -- define vim.g.terminal_color_{0,17}
     colors = {},
     overrides = {},
     theme = "default"           -- Load "default" theme or the experimental "light" theme
@@ -30,13 +35,10 @@ require('dressing').setup({
     enabled = true,
     -- Default prompt string
     default_prompt = "Input:",
-    -- Can be 'left', 'right', or 'center'
-    prompt_align = "left",
+    prompt_align = "center",
     -- When true, <Esc> will close the modal
     insert_only = true,
-    -- When true, input will star.t in insert mode.
     start_in_insert = true,
-    -- These are passed to nvim_open_win
     anchor = "SW",
     border = "rounded",
     -- 'editor' and 'win' will default to being centered
@@ -52,7 +54,6 @@ require('dressing').setup({
     win_options = {
       -- Window transparency (0-100)
       winblend = 15,
-      -- Disable line wrapping
       wrap = false,
     },
     -- Set to `false` to disable
@@ -115,7 +116,7 @@ require('dressing').setup({
         filetype = "DressingSelect",
       },
       win_options = {
-        winblend = 10,
+        winblend = 15,
       },
       max_width = 80,
       max_height = 40,
@@ -133,24 +134,24 @@ require('dressing').setup({
       buf_options = {},
       win_options = {
         -- Window transparency (0-100)
-        winblend = 10,
-      },
-      -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
-      -- the min_ and max_ options can be a list of mixed types.
-      -- max_width = {140, 0.8} means "the lesser of 140 columns or 80% of total"
-      width = nil,
-      max_width = { 140, 0.8 },
-      min_width = { 40, 0.2 },
-      height = nil,
-      max_height = 0.9,
-      min_height = { 10, 0.2 },
-      -- Set to `false` to disable
-      mappings = {
-        ["<Esc>"] = "Close",
-        ["<C-c>"] = "Close",
-        ["<CR>"] = "Confirm",
-      },
-      override = function(conf)
+          winblend = 15,
+        },
+        -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+        -- the min_ and max_ options can be a list of mixed types.
+        -- max_width = {140, 0.8} means "the lesser of 140 columns or 80% of total"
+        width = nil,
+        max_width = { 140, 0.8 },
+        min_width = { 40, 0.2 },
+        height = nil,
+        max_height = 0.9,
+        min_height = { 10, 0.2 },
+        -- Set to `false` to disable
+        mappings = {
+          ["<Esc>"] = "Close",
+          ["<C-c>"] = "Close",
+          ["<CR>"] = "Confirm",
+        },
+        override = function(conf)
         -- This is the config that will be passed to nvim_open_win.
         -- Change values here to customize the layout
         return conf
@@ -167,6 +168,9 @@ require('dressing').setup({
           nui = {
             relative = 'cursor',
             max_width = 40,
+            win_options = {
+              winblend = 15,
+            }
           }
         }
       end
@@ -219,7 +223,10 @@ require('possession').setup {
 --[[ befferline setuo ]]
 require('bufferline').setup{
   options = {
-  separator = false,
+    indicator = {
+      style = 'underline',
+    },
+    separator = false,
     offsets = {
       filetype = "NvimTree",
       text = "Explorer",
@@ -257,6 +264,17 @@ require'nvim-treesitter.configs'.setup {
 
 --[[ colorizer.nvim ]]
 require('colorizer').setup()
+--[[ comment.nvim setup ]]
+require('Comment').setup{}
+
+--[[ indent-blankline.nvim setup ]]
+vim.opt.list = true
+vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append "eol:↴"
+require("indent_blankline").setup {
+  show_end_of_line = true,
+  space_char_blankline = " ",
+}
 
 --[[ telescope config ]]
 require('telescope').setup{
@@ -288,10 +306,8 @@ require('telescope').setup{
       }
     },
     file_browser = {},
-    packer = {},
   },
 }
-
 require("telescope").load_extension("frecency")
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("file_browser")

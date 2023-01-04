@@ -14,6 +14,14 @@ require('plug-config')
 --[[ LSP setup ]]
 require('lsp-config')
 
+-- Automatically source and re-compile packer whenever you save this init.lua
+local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', {
+  command = 'source <afile> | silent! LspStop | silent! LspStart | PackerCompile',
+  group = packer_group,
+  pattern = vim.fn.expand '$MYVIMRC',
+})
+
 --[[ dash config, alpha.nvim ]]
 local alpha = require('alpha')
 local dashboard = require('alpha.themes.dashboard')
@@ -34,6 +42,14 @@ dashboard.section.footer.val = {
   [[ telegram: @linuxkarl or email: karlhaines615@yahoo.com ]],
 }
 dashboard.config.opts.noautocmd = true
-vim.cmd[[set background=]]
+
+if vim.g.neovide == true then
+  vim.g.neovide_transparency = 0.8
+  vim.g.neovide_cursor_vfx_mode = 'railgun'
+  vim.g.neovide_cursor_vfx_particle_density = 15.0
+else
+  vim.cmd[[set background=]]
+end
+
 vim.cmd[[autocmd User AlphaReady echo 'ready']]
 alpha.setup(dashboard.opts)
