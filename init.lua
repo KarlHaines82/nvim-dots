@@ -1,17 +1,14 @@
--- TODO:
--- make Telescope and packer work together
--- popup.nvim
--- show whitespace
--- Keymaps and leader pages
+--[[ TODO:
+ popup.nvim
+ Keymaps and leader pages
+ ]]
 
 --[[ Imports ]]
-require('plugins')		-- plugins
-require('vars')   -- Variables
-require('opts')   -- Options
-require('keys')   -- Keymaps
---[[ Plugin setup ]]
+require('plugins')  -- plugins
+require('vars')     -- Variables
+require('opts')     -- Options
+require('keys')     -- Keymaps
 require('plug-config')
---[[ LSP setup ]]
 require('lsp-config')
 
 -- Automatically source and re-compile packer whenever you save this init.lua
