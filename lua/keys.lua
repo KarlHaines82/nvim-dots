@@ -29,3 +29,44 @@ map('n', '<leader>tr', '<cmd>Telescope oldfiles<cr>', options)
 map('n', '<leader>ts', '<cmd>Telescope symbols<cr>', options)
 map('n', '<leader>qq', '<cmd>qa!<cr>', options)
 map('n', '<leader>wq', '<cmd>wqa!<cr>', options)
+
+local wk = require("which-key")
+-- As an example, we will create the following mappings:
+--  * <leader>ff find files
+--  * <leader>fr show recent files
+--  * <leader>fb Foobar
+-- we'll document:
+--  * <leader>fn new file
+--  * <leader>fe edit file
+-- and hide <leader>1
+
+wk.register({
+  t = {
+    name = "Telescope", -- optional group name
+    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme browser" },
+    ff = { "<cmd>Telescope find_files<cr>", "Find File" }, -- create a binding with label
+    fr = { "<cmd>Telescope frecency<cr>", "Frequently Used Files", noremap=false },
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File", noremap=false },
+    u = { "<cmd>Telescope symbols<cr>", "Symbol browser" },
+    p = { "<cmd>Telescope project<cr>", "Project browser" },
+    s = {
+      name = "Sessions",
+      c = { "<cmd>PosClose<cr>", "Session close" },
+      d = { "<cmd>PosDelete<cr>", "Session delete" },
+      l = { "<cmd>PosList<cr>", "Session list" },
+      o = { "<cmd>PosLoad<cr>", "Session open" },
+      m = { "<cmd>PosMigrate<cr>", "Session migrate" },
+      s = { "<cmd>PosSave<cr>", "Session save" },
+    },
+  },
+  f = {
+    name = "File actions",
+    n = { "<cmd>ene<CR>", "New file" },
+    r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
+    f = { "<cmd>Telescope frecency", "Frequently used files" },
+    z = { "<cmd>Telescope find_files", "Find files" },
+    b = { "<cmd>Telescope file_browser", "Folder browser" },
+  },
+  ["1"] = "which_key_ignore",  -- special label to hide it in the popup
+  b = { function() print("bar") end, "Foobar" } -- you can also pass functions!
+}, { prefix = "<leader>" })

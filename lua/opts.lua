@@ -4,9 +4,9 @@ local opt = vim.opt
 -- [[ Context ]]
 --opt.colorcolumn = '80'           -- str:  Show col for max line length
 opt.number = true                -- bool: Show line numbers
-opt.laststatus = 2
+opt.laststatus = 3               -- dont split split the status bar
 opt.scrolloff = 4                -- int:  Min num lines of context
-opt.signcolumn = "yes"            -- str:  Show the sign column
+opt.signcolumn = "yes"           -- str:  Show the sign column
 opt.cursorline = true
 opt.autochdir = true
 
@@ -22,7 +22,7 @@ opt.termguicolors = true         -- bool: If term supports ui color then enable
 opt.ignorecase = true            -- bool: Ignore case in search patterns
 opt.smartcase = true             -- bool: Override ignorecase if search contains capitals
 opt.incsearch = true             -- bool: Use incremental search
-opt.hlsearch = false             -- bool: Highlight search matches
+opt.hlsearch = true              -- bool: Highlight search matches
 
 -- [[ Whitespace ]]
 opt.expandtab = true             -- bool: Use spaces instead of tabs

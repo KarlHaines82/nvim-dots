@@ -46,7 +46,7 @@ function(use)
   use { 'ellisonleao/glow.nvim' }
   use { 'lukas-reineke/indent-blankline.nvim' } -- Add indentation guides even on blank lines
   use { 'numToStr/Comment.nvim' } -- "gc" to comment visual regions/lines
-
+  use { 'folke/which-key.nvim' }
   if packer_bootstrap then
     require('packer').sync()
   end
