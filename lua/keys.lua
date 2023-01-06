@@ -66,6 +66,12 @@ wk.register({
     },
     v = { "<cmd>Telescope vim_options<cr>", "vim options" },
   },
+  q = {
+    name = "Quit functions",
+    q = { "<cmd>qa!<cr>", "Quickly exit" },
+    s = { "<cmd>qw<cr>", "Write and close current buffer" },
+    w = { "<cmd>qwa!<cr>", "Write buffer and exit" }
+  },
   ["1"] = "which_key_ignore",  -- special label to hide it in the popup
   --b = { function() print("bar") end, "Foobar" } -- you can also pass functions!
 }, { prefix = "," })
