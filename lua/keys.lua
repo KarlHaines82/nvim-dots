@@ -53,8 +53,8 @@ wk.register({
     ff = { "<cmd>Telescope find_files<cr>", "Find File" }, -- create a binding with label
     fr = { "<cmd>Telescope frecency<cr>", "Frequently used Files", noremap=false },
     fo = { "<cmd>Telescope oldfiles<cr>", "Open recent File", noremap=false },
-    u = { "<cmd>Telescope symbols picker<cr>", "Symbol browser" },
-    p = { "<cmd>Telescope projects picker<cr>", "Project browser" },
+    u = { "<cmd>Telescope symbols<cr>", "Symbol browser" },
+    p = { "<cmd>Telescope project<cr>", "Project browser" },
     s = {
       name = "Sessions",
       c = { "<cmd>PosClose<cr>", "Session close" },

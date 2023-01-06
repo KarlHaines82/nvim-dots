@@ -49,7 +49,7 @@ local lsp_flags = {
 }
 lsp.pyright.setup{ coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
 --lsp.sumneko_lua.setup{coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
-lsp.sumneko_lua.setup{}
+lsp.sumneko_lua.setup{coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags}
 lsp.gopls.setup{ coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
 lsp.bashls.setup{ coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
 lsp.ccls.setup{ coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
