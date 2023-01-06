@@ -37,4 +37,3 @@ opt.splitbelow = false          -- bool: Place new window below the current o
 -- [[ mouse ]]
 opt.mouse = 'a'
 
-vim.cmd[[colorscheme kanagawa]]

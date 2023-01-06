@@ -68,4 +68,4 @@ wk.register({
   },
   ["1"] = "which_key_ignore",  -- special label to hide it in the popup
   --b = { function() print("bar") end, "Foobar" } -- you can also pass functions!
-}, { prefix = "<leader>" })
+}, { prefix = "," })

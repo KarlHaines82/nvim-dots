@@ -1,3 +1,8 @@
+require('onedark').setup{
+  style = 'darker',
+  transparent = true
+}
+require('onedark').load()
 require('nvim-tree').setup{
   view = {
     width = 30,
@@ -10,25 +15,6 @@ require('glow').setup{
   height_ratio = 0.8,
 }
 require('lualine').setup{}
-require('kanagawa').setup({
-  undercurl = true,           -- enable undercurls
-  ommentStyle = { italic = true },
-  functionStyle = {},
-  keywordStyle = { italic = true},
-  statementStyle = { bold = true },
-  typeStyle = {},
-  variablebuiltinStyle = { italic = true},
-  specialReturn = true,       -- special highlight for the return keyword
-  specialException = true,    -- special highlight for exception handling keywords
-  transparent = true,        -- do not set background color
-  dimInactive = false,        -- dim inactive window `:h hl-NormalNC`
-  globalStatus = true,       -- adjust window separators highlight for laststatus=3
-  terminalColors = true,      -- define vim.g.terminal_color_{0,17}
-  colors = {},
-  overrides = {},
-  theme = "default"           -- Load "default" theme or the experimental "light" theme
-})
-
 require('dressing').setup({
   input = {
     enabled = true,
@@ -192,19 +178,18 @@ require('possession').setup {
     delete_buffers = false,
   },
 }
-
 --[[ befferline setuo ]]
 require('bufferline').setup{
   options = {
     indicator = {
-      style = 'underline',
+      style = 'none'
     },
     separator = false,
     offsets = {
       filetype = "NvimTree",
       text = "Explorer",
     },
-    separator_style = { '','' },
+    separator_style = { '','' },
     always_show_bufferline = true,
     hover = {
       enabled = true,
@@ -233,11 +218,11 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = true,
   },
 }
-
 --[[ colorizer.nvim ]]
 require('colorizer').setup()
+
 --[[ comment.nvim setup ]]
-require('Comment').setup{}
+require('Comment').setup()
 
 --[[ indent-blankline.nvim setup ]]
 vim.opt.list = true
@@ -247,7 +232,6 @@ require("indent_blankline").setup {
   show_end_of_line = true,
   space_char_blankline = " ",
 }
-
 --[[ telescope config ]]
 require('telescope').setup{
   extensions = {
@@ -285,3 +269,4 @@ require("telescope").load_extension("fzf")
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("project")
 require('telescope').load_extension('possession')
+

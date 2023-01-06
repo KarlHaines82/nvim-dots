@@ -35,7 +35,7 @@ dashboard.section.buttons.val = {
 }
 dashboard.section.footer.val = {
   [[ ]],
-  [[   Lean, mean, (100% LUA) Neovim config by linuxkarl   ]],
+  [[   Lean, mean, (100% LUA) Neovim config by linuxkarl    ]],
   [[ telegram: @linuxkarl or email: karlhaines615@yahoo.com ]],
 }
 require('neovide')
