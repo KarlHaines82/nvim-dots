@@ -269,3 +269,13 @@ require("telescope").load_extension("fzf")
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("project")
 require('telescope').load_extension('possession')
+require("coq_3p") {
+  { src = "nvimlua", short_name = "nLUA", conf_only = true },
+  { src = "vimtex",  short_name = "vTEX" },
+  { src = "repl",
+    sh = "zsh",
+    shell = { p = "python", n = "node", pl = "perl", rs = "rust", r = "ruby", l = "lua", },
+    max_lines = 99,
+    deadline = 500,
+    unsafe = { "rm", "poweroff", "mv", "rmdir", "reboot", }},
+}
