@@ -1,4 +1,9 @@
 --[[ lsp and coq setup ]]
+require("mason").setup()
+require('mason-lspconfig').setup{
+  automatic_installation = true,
+}
+
 local lsp = require('lspconfig')
 local coq = require('coq')
 
@@ -42,9 +47,9 @@ local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
-
 lsp.pyright.setup{ coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
-lsp.sumneko_lua.setup{coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
+--lsp.sumneko_lua.setup{coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
+lsp.sumneko_lua.setup{}
 lsp.gopls.setup{ coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
 lsp.bashls.setup{ coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
 lsp.ccls.setup{ coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }

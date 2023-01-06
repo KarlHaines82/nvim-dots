@@ -5,7 +5,7 @@ require('onedark').setup{
 require('onedark').load()
 require('nvim-tree').setup{
   view = {
-    width = 30,
+    width = 24,
   },
 }
 require('glow').setup{

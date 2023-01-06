@@ -50,6 +50,8 @@ function(use)
   use 'lukas-reineke/indent-blankline.nvim'
   use 'numToStr/Comment.nvim'
   use 'folke/which-key.nvim'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
 
   if packer_bootstrap then
     require('packer').sync()
