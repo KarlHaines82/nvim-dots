@@ -17,7 +17,6 @@ local wk = require("which-key")
 --  * <leader>fn new file
 --  * <leader>fe edit file
 -- and hide <leader>1
-
 wk.register({
   e = { "<cmd>NvimTreeToggle<CR>", "Explore NvimTree" },
   n = { "<cmd>e $MYVIMRC<cr>", "Neovim configuration" },
@@ -69,8 +68,8 @@ wk.register({
   q = {
     name = "Quit functions",
     q = { "<cmd>qa!<cr>", "Quickly exit" },
-    s = { "<cmd>qw<cr>", "Write and close current buffer" },
-    w = { "<cmd>qwa!<cr>", "Write buffer and exit" }
+    s = { "<cmd>wq<cr>", "Write and close current buffer" },
+    w = { "<cmd>wqa!<cr>", "Write buffer and exit" }
   },
   ["1"] = "which_key_ignore",  -- special label to hide it in the popup
   --b = { function() print("bar") end, "Foobar" } -- you can also pass functions!
