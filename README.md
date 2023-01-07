@@ -2,7 +2,7 @@
 All new, ALL LUA, lean and mean NVIM configs, by yours truly. Enjoy.
 
 ## Screenshot, COQ, LSP rocking it!
-Here is a screenshot, running vim inside of alacritty, on a qtile desktop.
+Here is a screenshot, running vim inside of wezterm, on a qtile desktop.
 
 ![nvim-screenie](nvim-screenie.png)
 
