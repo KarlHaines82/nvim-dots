@@ -8,5 +8,5 @@ Here is a screenshot, running vim inside of alacritty, on a qtile desktop.
 
 Here is another showing Neovim-QT on a Plasma5 desktop.
 
-[nvim-screenie2](nvim-screenie2.png)
+![nvim-screenie2](nvim-screenie2.png)
 
