@@ -5,9 +5,6 @@ require('opts')     -- Options
 require('keys')     -- Keymaps
 require('plug-config')
 require('lsp-config')
-if vim.g.neovide == true then
-  require('neovide')
-end
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {

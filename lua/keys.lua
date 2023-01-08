@@ -4,19 +4,14 @@ local map = vim.api.nvim_set_keymap
 --[[ setup g:mapleader ]]
 map('n', ',', '', {})
 vim.g.mapleader = ','
+vim.g.maplocalleader
 
-options = {
+local options = {
   noremap = true
 }
+
 local wk = require("which-key")
--- As an example, we will create the following mappings:
---  * <leader>ff find files
---  * <leader>fr show recent files
---  * <leader>fb Foobar
--- we'll document:
---  * <leader>fn new file
---  * <leader>fe edit file
--- and hide <leader>1
+
 wk.register({
   e = { "<cmd>NvimTreeToggle<CR>", "Explore NvimTree" },
   n = { "<cmd>e $MYVIMRC<cr>", "Neovim configuration" },
