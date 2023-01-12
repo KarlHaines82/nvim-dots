@@ -1,16 +1,22 @@
 --[[ Imports ]]
-require('plugins')  -- plugins
-require('vars')     -- Variables
-require('opts')     -- Options
-require('keys')     -- Keymaps
-require('plug-config')
-require('lsp-config')
+require('plugins')         -- plugins
+require('vars')            -- Variables
+require('opts')            -- Options
+require('keys')            -- Keymaps
+require('plug-config')     -- Plugin configs
+require('lsp-config')      -- LSP config
+require('slanted-gaps')    -- LuaLine slanted-gaps theme
+
+-- Load colorscheme
+require('onedark').load()
+vim.opt.background = 'dark'
+
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
-  command = 'source <afile> | silent! LspStop | silent! LspStart | PackerCompile | echo "PackerCompile complete.."',
+  command = 'source <afile> | silent! LspStop | silent! LspStart | PackerCompile',
   group = packer_group,
-  pattern = vim.fn.expand '$MYVIMRC',
+  pattern = vim.fn.expand '$HOME/.config/nvim/init.lua',
 })
 --[[ dash config, alpha.nvim ]]
 local alpha = require('alpha')
@@ -25,7 +31,7 @@ dashboard.section.header.val = {
 dashboard.section.buttons.val = {
   dashboard.button( "r", "  Frequent/recent files", "<cmd>Telescope frecency<CR>"),
   dashboard.button( "n", "  New file", "<cmd>ene<CR>"),
-  dashboard.button( "e", "  Explore NvimTree", "<cmd>NvimTreeToggle<CR>"),
+  dashboard.button( "e", "  Explore NvimTree", "<cmd>Neotree toggle<CR>"),
   dashboard.button( "f", "  Find files", "<cmd>Telescope find_files<CR>"),
   dashboard.button( "c", "  Neovim config", "<cmd>e $HOME/.config/nvim/init.lua<CR>"),
   dashboard.button("pl", "  Projects", "<cmd>Telescope project<CR>"),
@@ -39,5 +45,5 @@ dashboard.section.footer.val = {
   [[ telegram: @linuxkarl or email: karlhaines615@yahoo.com ]],
 }
 dashboard.config.opts.noautocmd = true
-vim.cmd[[autocmd User AlphaReady echo 'ready']]
+vim.cmd([[autocmd User AlphaReady echo 'ready']])
 alpha.setup(dashboard.opts)

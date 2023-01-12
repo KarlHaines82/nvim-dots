@@ -1,20 +1,38 @@
 require('onedark').setup{
   style = 'darker',
-  transparent = true
 }
-require('onedark').load()
-require('nvim-tree').setup{
-  view = {
-    width = 24,
+require('neo-tree').setup({
+  close_if_last_window = true,
+  popup_border_style = "rounded",
+  enable_git_status = true,
+  enable_diagnostics = true,
+  sort_case_insensitive = true,
+  default_component_configs = {
+    container = {
+      width = 30,
+      max_width = 35,
+    }
   },
-}
+  source_selector = {
+    statusline = true,
+  },
+  window = {
+    width = 30,
+  },
+  filesystem = {
+    filtered_items = {
+      visible = true,
+      hide_dotfiles = false,
+    }
+  }
+})
 require('glow').setup{
   style = 'dark',
   border = 'rounded',
   width_ratio = 0.9,
   height_ratio = 0.8,
 }
-require('lualine').setup{}
+
 require('dressing').setup({
   input = {
     enabled = true,
@@ -181,15 +199,13 @@ require('possession').setup {
 --[[ befferline setuo ]]
 require('bufferline').setup{
   options = {
-    indicator = {
-      style = 'none'
-    },
+    indicator = { style = 'none' },
     separator = false,
     offsets = {
-      filetype = "NvimTree",
+      filetype = "neo-tree",
       text = "Explorer",
     },
-    separator_style = { '','' },
+    separator_style = { '' ,'' },
     always_show_bufferline = true,
     hover = {
       enabled = true,
@@ -220,10 +236,8 @@ require'nvim-treesitter.configs'.setup {
 }
 --[[ colorizer.nvim ]]
 require('colorizer').setup()
-
 --[[ comment.nvim setup ]]
 require('Comment').setup()
-
 --[[ indent-blankline.nvim setup ]]
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
@@ -253,14 +267,21 @@ require('telescope').setup{
         ["dev"]     = "$HOME/Dev",
       }
     },
-    project = {},
-    symbols = {
-      sources = {
-        'emoji',
-        'kaomoji',
-        'gitmoji'
-      }
+    project = {
+      base_dirs = {
+        { path = '~/Dev/qtile' },
+        { path = '~/Dev/qtile-extras' },
+        { path = '~/.config/nvim', max_depth = 2 },
+        { path = '~/.config/lvim', max_depth = 2 },
+        { path = '~/.config/qtile' },
+      },
+      hidden_files = true, -- default: false
+      theme = "dropdown",
+      order_by = "asc",
+      search_by = "title",
+      sync_with_nvim_tree = true, -- default false    
     },
+    symbols = { sources = { 'emoji','kaomoji','gitmoji' }},
     file_browser = {},
   },
 }
@@ -279,3 +300,6 @@ require("coq_3p") {
     deadline = 500,
     unsafe = { "rm", "poweroff", "mv", "rmdir", "reboot", }},
 }
+require('mini.sessions').setup()
+require('mini.pairs').setup()
+

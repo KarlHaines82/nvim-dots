@@ -14,8 +14,6 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup{
 function(use)
   use 'wbthomason/packer.nvim'
-  use { 'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons' }
   use 'nvim-lualine/lualine.nvim'
   use 'Mofiqul/dracula.nvim'
   use 'rebelot/kanagawa.nvim'
@@ -52,18 +50,19 @@ function(use)
   use 'folke/which-key.nvim'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
+  use 'echasnovski/mini.sessions'
+  use 'echasnovski/mini.pairs'
   -- Unless you are still migrating, remove the deprecated commands from v1.x
   vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
-    requires = { 
+    requires = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     }
   }
-
   if packer_bootstrap then
     require('packer').sync()
   end

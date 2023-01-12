@@ -1,45 +1,46 @@
 --[[ lsp and coq setup ]]
 require("mason").setup()
-require('mason-lspconfig').setup{
-  automatic_installation = true,
-}
+require('mason-lspconfig').setup{ automatic_installation = true }
 
 local lsp = require('lspconfig')
 local coq = require('coq')
+local diagnostic = require('vim.diagnostic')
+local keymap = require('vim.keymap')
+local vlsp = require('vim.lsp')
+local vim = vim
 
-local kmap = vim.keymap
 -- Mappings.                                                                               
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions            
 local opts = { noremap=true, silent=true }
-kmap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-kmap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-kmap.set('n', ']d', vim.diagnostic.goto_next, opts)
-kmap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 -- Use an on_attach function to only map the following keys                                
 -- after the language server attaches to the current buffer                                
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>                                             
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vlsp.omnifunc')
   -- Mappings.                                                                             
-  -- See `:help vim.lsp.*` for documentation on any of the below functions                
+  -- See `:help vlsp.*` for documentation on any of the below functions                
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  kmap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  kmap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  kmap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  kmap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  kmap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  kmap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  kmap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  kmap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  keymap.set('n', 'gD', vlsp.buf.declaration, bufopts)
+  keymap.set('n', 'gd', vlsp.buf.definition, bufopts)
+  keymap.set('n', 'K', vlsp.buf.hover, bufopts)
+  keymap.set('n', 'gi', vlsp.buf.implementation, bufopts)
+  keymap.set('n', '<C-k>', vlsp.buf.signature_help, bufopts)
+  keymap.set('n', '<space>wa', vlsp.buf.add_workspace_folder, bufopts)
+  keymap.set('n', '<space>wr', vlsp.buf.remove_workspace_folder, bufopts)
+  keymap.set('n', '<space>wl', function()
+    print(vim.inspect(vlsp.buf.list_workspace_folders()))
   end, bufopts)
-  kmap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  kmap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  kmap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  kmap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  kmap.set('n', '<space>f', function()
-    vim.lsp.buf.format{async = true}
+  keymap.set('n', '<space>D', vlsp.buf.type_definition, bufopts)
+  keymap.set('n', '<space>rn', vlsp.buf.rename, bufopts)
+  keymap.set('n', '<space>ca', vlsp.buf.code_action, bufopts)
+  keymap.set('n', 'gr', vlsp.buf.references, bufopts)
+  keymap.set('n', '<space>f', function()
+    vlsp.buf.format{async = true}
   end, bufopts)
 end
 
@@ -48,8 +49,7 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 lsp.pyright.setup{ coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
---lsp.sumneko_lua.setup{coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
-lsp.sumneko_lua.setup{coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags}
+lsp.sumneko_lua.setup{ coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
 lsp.gopls.setup{ coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
 lsp.bashls.setup{ coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }
 lsp.ccls.setup{ coq.lsp_ensure_capabilities(), on_attach = on_attach, flags = lsp_flags }

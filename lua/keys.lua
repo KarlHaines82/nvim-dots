@@ -4,7 +4,7 @@ local map = vim.api.nvim_set_keymap
 --[[ setup g:mapleader ]]
 map('n', ',', '', {})
 vim.g.mapleader = ','
-vim.g.maplocalleader
+vim.g.maplocalleader = ','
 
 local options = {
   noremap = true
@@ -13,7 +13,7 @@ local options = {
 local wk = require("which-key")
 
 wk.register({
-  e = { "<cmd>NvimTreeToggle<CR>", "Explore NvimTree" },
+  e = { "<cmd>Neotree toggle<CR>", "Neo-tree file explorer" },
   n = { "<cmd>e $MYVIMRC<cr>", "Neovim configuration" },
   f = {
     name = "File functions",
@@ -49,15 +49,15 @@ wk.register({
     fo = { "<cmd>Telescope oldfiles<cr>", "Open recent File", noremap=false },
     u = { "<cmd>Telescope symbols<cr>", "Symbol browser" },
     p = { "<cmd>Telescope project<cr>", "Project browser" },
-    s = {
-      name = "Sessions",
-      c = { "<cmd>PosClose<cr>", "Session close" },
-      d = { "<cmd>PosDelete<cr>", "Session delete" },
-      l = { "<cmd>PosList<cr>", "Session list" },
-      o = { "<cmd>PosLoad<cr>", "Session open" },
-      m = { "<cmd>PosMigrate<cr>", "Session migrate" },
-      s = { "<cmd>PosSave<cr>", "Session save" },
-    },
+    -- s = {
+    --   name = "Sessions",
+    --   c = { "<cmd>PosClose<cr>", "Session close" },
+    --   d = { "<cmd>PosDelete<cr>", "Session delete" },
+    --   l = { "<cmd>PosList<cr>", "Session list" },
+    --   o = { "<cmd>PosLoad<cr>", "Session open" },
+    --   m = { "<cmd>PosMigrate<cr>", "Session migrate" },
+    --   s = { "<cmd>PosSave<cr>", "Session save" },
+    -- },
     v = { "<cmd>Telescope vim_options<cr>", "vim options" },
   },
   q = {
@@ -67,5 +67,5 @@ wk.register({
     w = { "<cmd>wqa!<cr>", "Write buffer and exit" }
   },
   ["1"] = "which_key_ignore",  -- special label to hide it in the popup
-  --b = { function() print("bar") end, "Foobar" } -- you can also pass functions!
+-- b = { function() print("bar") end, "Foobar" } -- you can also pass functions!
 }, { prefix = "," })
