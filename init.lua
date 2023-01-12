@@ -40,7 +40,6 @@ dashboard.section.buttons.val = {
   dashboard.button( "q", "  Quit Neovim", "<cmd>qa<CR>"),
 }
 dashboard.section.footer.val = {
-  [[ ]],
   [[   Lean, mean, (100% LUA) Neovim config by linuxkarl    ]],
   [[ telegram: @linuxkarl or email: karlhaines615@yahoo.com ]],
 }
