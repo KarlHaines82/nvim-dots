@@ -1,23 +1,23 @@
 --[[ Imports ]]
-require('plugins')         -- plugins
+require('plugins')              -- plugins
 require('variables')            -- Variables
-require('options')            -- Options
-require('keymaps')            -- Keymaps
-require('plugin-configs')     -- Plugin configs
-require('lsp-config')      -- LSP config
---require('slanted-gaps')    -- LuaLine slanted-gaps theme
+require('options')              -- Options
+require('keymaps')              -- Keymaps
+require('plugin-configs')       -- Plugin configs
+require('lsp-config')           -- LSP config
+--require('slanted-gaps')         -- LuaLine slanted-gaps theme
 
 -- Load colorscheme
 require('onedark').load()
 vim.opt.background = 'dark'
 
--- Automatically source and re-compile packer whenever you save this init.lua
+-- Automatically source and run PackerSync
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-  command = 'source <afile> | silent! aLspStop | silent! LspStart | PackerCompile',
+ vim.api.nvim_create_autocmd('BufWritePost', {
+  command = 'source <afile> | silent! LspStop | silent! LspStart | PackerSync',
   group = packer_group,
-  pattern = vim.fn.expand "$HOME/.config/nvim/init.lua",
-})
+  pattern = vim.fn.stdpath('config') .. '/init.lua'
+} )
 --[[ dash config, alpha.nvim ]]
 local alpha = require('alpha')
 local dashboard = require('alpha.themes.dashboard')

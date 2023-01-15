@@ -1,3 +1,9 @@
+vim.api.nvim_create_autocmd('BufWritePost', {
+  command = 'source <afile> | silent! LspStop | silent! LspStart | PackerSync',
+  group = packer_group,
+  pattern = vim.fn.stdpath('config') .. '/lua/plugins.lua',
+})
+
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -15,6 +21,7 @@ return require('packer').startup{
 function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-lualine/lualine.nvim'
+  use 'navarasu/onedark.nvim'
   use 'Mofiqul/dracula.nvim'
   use 'rebelot/kanagawa.nvim'
   use { 'akinsho/bufferline.nvim',
@@ -40,9 +47,6 @@ function(use)
   use 'nvim-telescope/telescope-fzf-native.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'stevearc/dressing.nvim'
-  use 'navarasu/onedark.nvim'
-  use { 'jedrzejboczar/possession.nvim',
-    requires = 'nvim-lua/plenary.nvim' }
   use 'norcalli/nvim-colorizer.lua'
   use 'ellisonleao/glow.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
@@ -52,13 +56,12 @@ function(use)
   use 'williamboman/mason-lspconfig.nvim'
   use 'echasnovski/mini.sessions'
   use 'echasnovski/mini.pairs'
-  vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
     requires = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
   }

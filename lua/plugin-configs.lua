@@ -1,5 +1,12 @@
+vim.api.nvim_create_autocmd('BufWritePost', {
+  command = 'source <afile> | silent! LspStop | silent! LspStart | PackerSync',
+  group = packer_group,
+  pattern = vim.fn.stdpath('config') .. '/lua/plugin-configs.lua',
+})
+require('lualine').setup({
+})
 require('onedark').setup{
-  style = 'darker',
+  style = 'dark',
 }
 require('neo-tree').setup({
   close_if_last_window = true,
@@ -10,7 +17,6 @@ require('neo-tree').setup({
   default_component_configs = {
     container = {
       width = 30,
-      max_width = 35,
     }
   },
   source_selector = {
@@ -29,8 +35,8 @@ require('neo-tree').setup({
 require('glow').setup{
   style = 'dark',
   border = 'rounded',
-  width_ratio = 0.9,
-  height_ratio = 0.8,
+  width_ratio = 0.7,
+  height_ratio = 0.7,
 }
 
 require('dressing').setup({
@@ -155,47 +161,6 @@ require('dressing').setup({
   }
 })
 
---[[ possession config ]]
-require('possession').setup {
-  autosave = {
-    on_load = true,
-    on_quit = true,
-  },
-  commands = {
-    save = 'PosSave',
-    load = 'PosLoad',
-    close = 'PosClose',
-    delete = 'PosDelete',
-    show = 'PosShow',
-    list = 'PosList',
-    migrate = 'PosMigrate',
-  },
-  hooks = {
-    before_save = function(name) return {} end,
-    after_save = function(name, user_data, aborted) end,
-    before_load = function(name, user_data) return user_data end,
-    after_load = function(name, user_data) end,
-  },
-  plugins = {
-    close_windows = {
-      hooks = {'before_load'},
-      preserve_layout = true,  -- or fun(win): boolean
-      match = {
-        floating = true,
-        custom = false,  -- or fun(win): boolean
-      },
-    },
-    delete_hidden_buffers = {
-      hooks = {
-        'before_load',
-      },
-      force = false,  -- or fun(buf): boolean
-    },
-    nvim_tree = true,
-    tabby = true,
-    delete_buffers = false,
-  },
-}
 --[[ befferline setuo ]]
 require('bufferline').setup{
   options = {
@@ -219,13 +184,13 @@ require('bufferline').setup{
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   auto_install = true,
-  ensure_installed = { "c", "rust", "python", "markdown", "bash" },
+  ensure_installed = { "c", "rust", "python", "markdown", "bash", "lua" },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
   highlight = {
     enable = true,
     disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
+        local max_filesize = 1000 * 1024 -- 1000 KB
         local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
         if ok and stats and stats.size > max_filesize then
             return true
@@ -279,7 +244,7 @@ require('telescope').setup{
       theme = "dropdown",
       order_by = "asc",
       search_by = "title",
-      sync_with_nvim_tree = true, -- default false    
+      sync_with_nvim_tree = true, -- default false
     },
     symbols = { sources = { 'emoji','kaomoji','gitmoji' }},
     file_browser = {},
@@ -289,7 +254,7 @@ require("telescope").load_extension("frecency")
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("project")
-require('telescope').load_extension('possession')
+
 require("coq_3p") {
   { src = "nvimlua", short_name = "nLUA", conf_only = true },
   { src = "vimtex",  short_name = "vTEX" },
