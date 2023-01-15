@@ -1,11 +1,11 @@
 --[[ Imports ]]
 require('plugins')         -- plugins
-require('vars')            -- Variables
-require('opts')            -- Options
-require('keys')            -- Keymaps
-require('plug-config')     -- Plugin configs
+require('variables')            -- Variables
+require('options')            -- Options
+require('keymaps')            -- Keymaps
+require('plugin-configs')     -- Plugin configs
 require('lsp-config')      -- LSP config
-require('slanted-gaps')    -- LuaLine slanted-gaps theme
+--require('slanted-gaps')    -- LuaLine slanted-gaps theme
 
 -- Load colorscheme
 require('onedark').load()
@@ -14,9 +14,9 @@ vim.opt.background = 'dark'
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
-  command = 'source <afile> | silent! LspStop | silent! LspStart | PackerCompile',
+  command = 'source <afile> | silent! aLspStop | silent! LspStart | PackerCompile',
   group = packer_group,
-  pattern = vim.fn.expand '$HOME/.config/nvim/init.lua',
+  pattern = vim.fn.expand "$HOME/.config/nvim/init.lua",
 })
 --[[ dash config, alpha.nvim ]]
 local alpha = require('alpha')

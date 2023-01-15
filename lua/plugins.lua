@@ -52,7 +52,6 @@ function(use)
   use 'williamboman/mason-lspconfig.nvim'
   use 'echasnovski/mini.sessions'
   use 'echasnovski/mini.pairs'
-  -- Unless you are still migrating, remove the deprecated commands from v1.x
   vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
   use {
     "nvim-neo-tree/neo-tree.nvim",
@@ -61,7 +60,7 @@ function(use)
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
-    }
+    },
   }
   if packer_bootstrap then
     require('packer').sync()
