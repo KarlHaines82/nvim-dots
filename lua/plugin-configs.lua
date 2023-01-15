@@ -3,13 +3,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   group = packer_group,
   pattern = vim.fn.stdpath('config') .. '/lua/plugin-configs.lua',
 })
-require('lualine').setup({
-  options = {
-    disabled_filetypes = {
-      'neo-tree'
-    },
-  }
-})
 require('onedark').setup{
   style = 'dark',
 }
@@ -165,7 +158,16 @@ require('dressing').setup({
     end
   }
 })
-
+require('lualine').setup({
+  options = {
+    disabled_filetypes = {
+      'neo-tree'
+    },
+    sections = {
+      padding = 1,
+    },
+  }
+})
 --[[ befferline setup ]]
 require('bufferline').setup{
   options = {
@@ -272,4 +274,7 @@ require("coq_3p") {
 }
 require('mini.sessions').setup()
 require('mini.pairs').setup()
-
+require('mini.align').setup()
+require('mini.map').setup()
+require('mini.cursorword').setup()
+require('mini.surround').setup()

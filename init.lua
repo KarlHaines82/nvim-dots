@@ -5,12 +5,9 @@ require('options')              -- Options
 require('keymaps')              -- Keymaps
 require('plugin-configs')       -- Plugin configs
 require('lsp-config')           -- LSP config
---require('slanted-gaps')         -- LuaLine slanted-gaps theme
-
 -- Load colorscheme
 require('onedark').load()
 vim.opt.background = 'dark'
-
 -- Automatically source and run PackerSync
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
  vim.api.nvim_create_autocmd('BufWritePost', {

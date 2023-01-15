@@ -12,7 +12,7 @@ local theme = {
   normal = {
     a = { fg = colors.white, bg = colors.black },
     b = { fg = colors.white, bg = colors.grey },
-    c = { fg = colors.white, bg = colors. },
+    c = { fg = colors.white, bg = colors.black },
     z = { fg = colors.white, bg = colors.black },
   },
   insert = { a = { fg = colors.black, bg = colors.light_green } },
@@ -75,7 +75,7 @@ require('lualine').setup {
     section_separators = { left = '', right = '' },
   },
   sections = process_sections {
-    lualine_a = { 'mode' },
+    lualine_a = { 'mode', { left_padding = 1 } },
     lualine_b = {
       'branch',
       'diff',
@@ -115,7 +115,7 @@ require('lualine').setup {
     lualine_c = {},
     lualine_x = {},
     lualine_y = { search_result, 'filetype' },
-    lualine_z = { '%l:%c', '%p%%/%L' },
+    lualine_z = { '%l:%c', '%p%%/%L', { right_padding = 1 }},
   },
   inactive_sections = {
     lualine_c = { '%f %y %m' },
