@@ -4,6 +4,11 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = vim.fn.stdpath('config') .. '/lua/plugin-configs.lua',
 })
 require('lualine').setup({
+  options = {
+    disabled_filetypes = {
+      'neo-tree'
+    },
+  }
 })
 require('onedark').setup{
   style = 'dark',
@@ -161,7 +166,7 @@ require('dressing').setup({
   }
 })
 
---[[ befferline setuo ]]
+--[[ befferline setup ]]
 require('bufferline').setup{
   options = {
     indicator = { style = 'none' },

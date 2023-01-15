@@ -17,7 +17,7 @@ local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
   command = 'source <afile> | silent! LspStop | silent! LspStart | PackerSync',
   group = packer_group,
   pattern = vim.fn.stdpath('config') .. '/init.lua'
-} )
+})
 --[[ dash config, alpha.nvim ]]
 local alpha = require('alpha')
 local dashboard = require('alpha.themes.dashboard')
