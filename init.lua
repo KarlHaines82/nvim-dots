@@ -5,16 +5,12 @@ require("options") -- Options
 require("keymaps") -- Keymaps
 require("plugin-configs") -- Plugin configs
 require("lsp-config") -- LSP config
+local vim = vim
 -- Load colorscheme
-require("onedark").setup({
-	style = "darker",
-})
-require("onedark").load()
+vim.cmd([[colorscheme tokyonight-moon]])
 
-local fn = vim.fn
-local api = vim.api
-local neocfg = fn.stdpath("config")
-local packer_group = api.nvim_create_augroup("Packer", { clear = true })
+local neocfg = vim.fn.stdpath("config")
+local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
 local packer = require("packer")
 
 -- Automatically source and run PackerCompile/PackerSync on save (of init.lua or plugins.lua)
@@ -26,16 +22,17 @@ local run_pcompile = function()
 	vim.cmd([[luafile %]])
 	packer.compile()
 end
-api.nvim_create_autocmd("BufWritePost", {
+vim.api.nvim_create_autocmd("BufWritePost", {
 	callback = run_pcompile,
 	group = packer_group,
 	pattern = neocfg .. "/init.lua",
 })
-api.nvim_create_autocmd("BufWritePost", {
+vim.api.nvim_create_autocmd("BufWritePost", {
 	callback = run_psync,
 	group = packer_group,
 	pattern = neocfg .. "/lua/plugins.lua",
 })
+
 --[[ dash config, alpha.nvim ]]
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
@@ -53,7 +50,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find files", "<cmd>Telescope find_files<CR>"),
 	dashboard.button("c", "  Neovim config", "<cmd>e $HOME/.config/nvim/init.lua<CR>"),
 	dashboard.button("pl", "  Projects", "<cmd>Telescope project<CR>"),
-	dashboard.button("s", "  Session list", "<cmd>Telescope possession list<CR>"),
+	--dashboard.button("s", "  Session list", "<cmd>Telescope possession list<CR>"),
 	dashboard.button("ps", "  Run PackerSync", "<cmd>ene<bar>:PackerSync<CR>"),
 	dashboard.button("q", "  Quit Neovim", "<cmd>qa<CR>"),
 }
@@ -63,12 +60,12 @@ dashboard.section.footer.val = {
 }
 dashboard.config.opts.noautocmd = true
 
---[[ Setup formatting on save ]]
+--[[ Setup null-ls formatting on save ]]
 local null_ls = require("null-ls")
-local augroup = api.nvim_create_augroup("LspFormatting", { clear = true })
+local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
 local format_buf = function(client, bufnr)
 	if client.supports_method("textDocument/formatting") then
-		api.nvim_create_autocmd("BufWritePre", {
+		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = augroup,
 			buffer = bufnr,
 			callback = function()
@@ -77,7 +74,6 @@ local format_buf = function(client, bufnr)
 		})
 	end
 end
-
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
@@ -86,9 +82,9 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.luacheck,
 		null_ls.builtins.code_actions.refactoring,
 		null_ls.builtins.code_actions.shellcheck,
-		null_ls.builtins.completion.spell,
 	},
 	on_attach = format_buf,
 })
+-- Bring up the dashboard
 vim.cmd([[autocmd User AlphaReady echo 'ready']])
 alpha.setup(dashboard.opts)

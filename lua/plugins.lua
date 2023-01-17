@@ -18,6 +18,7 @@ return require("packer").startup({
 		use("navarasu/onedark.nvim")
 		use("Mofiqul/dracula.nvim")
 		use("rebelot/kanagawa.nvim")
+		use({ "folke/tokyonight.nvim" })
 		use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 		use("neovim/nvim-lspconfig")
 		use({ "ms-jpq/coq_nvim", branch = "coq" })
