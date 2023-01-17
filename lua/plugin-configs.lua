@@ -266,5 +266,7 @@ require("coq_3p")({
 require("mini.sessions").setup()
 require("mini.pairs").setup()
 require("mini.align").setup()
-require("mini.cursorword").setup()
+require("mini.cursorword").setup({
+	delay = 3000,
+})
 require("mini.surround").setup()
