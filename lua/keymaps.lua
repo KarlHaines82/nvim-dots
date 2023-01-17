@@ -64,7 +64,8 @@ wk.register({
     name = "Quit functions",
     q = { "<cmd>qa!<cr>", "Quickly exit" },
     s = { "<cmd>wq<cr>", "Write and close current buffer" },
-    w = { "<cmd>wqa!<cr>", "Write buffer and exit" }
+    w = { "<cmd>wqa!<cr>", "Write buffer and exit" },
+    W = { "<cmd>noautocmd wqa!<cr>", "Write without formatting and exit" },
   },
   ["1"] = "which_key_ignore",  -- special label to hide it in the popup
 -- b = { function() print("bar") end, "Foobar" } -- you can also pass functions!

@@ -18,7 +18,7 @@ return require("packer").startup({
 		use("navarasu/onedark.nvim")
 		use("Mofiqul/dracula.nvim")
 		use("rebelot/kanagawa.nvim")
-		use({ "folke/tokyonight.nvim" })
+		use({ "folke/tokyonight.nvim", options = { style = "storm" } })
 		use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 		use("neovim/nvim-lspconfig")
 		use({ "ms-jpq/coq_nvim", branch = "coq" })
@@ -75,7 +75,6 @@ return require("packer").startup({
 			branch = "v2.x",
 			config = function()
 				-- Unless you are still migrating, remove the deprecated commands from v1.x
-				vim.cmd("let g:neo_tree_remove_legacy_commands = v:true")
 				vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
 				vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
 				vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })

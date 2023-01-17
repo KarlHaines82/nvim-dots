@@ -1,8 +1,9 @@
+--[[ neo-tree setup ]]
 require("neo-tree").setup({
 	close_if_last_window = true,
 	popup_border_style = "rounded",
-	enable_git_status = true,
-	enable_diagnostics = true,
+	enable_git_status = false,
+	enable_diagnostics = false,
 	sort_case_insensitive = true,
 	default_component_configs = {
 		container = {
@@ -10,7 +11,7 @@ require("neo-tree").setup({
 		},
 	},
 	source_selector = {
-		statusline = true,
+		winbar = true,
 	},
 	window = {
 		width = 30,
@@ -22,6 +23,8 @@ require("neo-tree").setup({
 		},
 	},
 })
+
+--[[ glow setup ]]
 require("glow").setup({
 	style = "dark",
 	border = "rounded",
@@ -29,110 +32,10 @@ require("glow").setup({
 	height_ratio = 0.7,
 })
 
+--[[ dressing setup ]]
 require("dressing").setup({
 	input = {
-		enabled = true,
-		-- Default prompt string
-		default_prompt = "Input:",
-		prompt_align = "center",
-		-- When true, <Esc> will close the modal
-		insert_only = true,
-		start_in_insert = true,
-		anchor = "SW",
-		border = "rounded",
-		relative = "cursor",
-		prefer_width = 40,
-		width = nil,
-		max_width = { 80, 0.9 },
-		min_width = { 20, 0.2 },
-		buf_options = {},
-		win_options = {
-			winblend = 15,
-			wrap = false,
-		},
-		mappings = {
-			n = {
-				["<Esc>"] = "Close",
-				["<CR>"] = "Confirm",
-			},
-			i = {
-				["<C-c>"] = "Close",
-				["<CR>"] = "Confirm",
-				["<Up>"] = "HistoryPrev",
-				["<Down>"] = "HistoryNext",
-			},
-		},
-		override = function(conf)
-			return conf
-		end,
-		get_config = nil,
-	},
-	select = {
-		enabled = true,
-		backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
-		trim_prompt = true,
-		telescope = require("telescope.themes").get_ivy({}),
-		-- Options for fzf selector
-		fzf = {
-			window = {
-				width = 0.5,
-				height = 0.4,
-			},
-		},
-		-- Options for fzf_lua selector
-		fzf_lua = {
-			winopts = {
-				width = 0.5,
-				height = 0.4,
-			},
-		},
-		-- Options for nui Menu
-		nui = {
-			position = "50%",
-			size = nil,
-			relative = "editor",
-			border = {
-				style = "rounded",
-			},
-			buf_options = {
-				swapfile = false,
-				filetype = "DressingSelect",
-			},
-			win_options = {
-				winblend = 15,
-			},
-			max_width = 80,
-			max_height = 40,
-			min_width = 40,
-			min_height = 10,
-		},
-		builtin = {
-			-- These are passed to nvim_open_win
-			anchor = "NW",
-			border = "rounded",
-			-- 'editor' and 'win' will default to being centered
-			relative = "editor",
-			buf_options = {},
-			win_options = {
-				winblend = 15,
-			},
-			width = nil,
-			max_width = { 140, 0.8 },
-			min_width = { 40, 0.2 },
-			height = nil,
-			max_height = 0.9,
-			min_height = { 10, 0.2 },
-			mappings = {
-				["<Esc>"] = "Close",
-				["<C-c>"] = "Close",
-				["<CR>"] = "Confirm",
-			},
-			override = function(conf)
-				-- Change values here to customize the layout
-				return conf
-			end,
-		},
-		-- Used to override format_item. See :help dressing-format
+		-- used to override format_item. see :help dressing-format
 		format_item_override = {},
 		get_config = function(opts)
 			if opts.kind == "codeaction" then
@@ -150,24 +53,28 @@ require("dressing").setup({
 		end,
 	},
 })
+
+--[[ lualine setup ]]
 require("lualine").setup({
 	options = {
-		disabled_filetypes = {
+		extensions = {
 			"neo-tree",
 		},
 	},
 })
+
 --[[ befferline setup ]]
 require("bufferline").setup({
 	options = {
 		indicator = { style = "none" },
-		separator = false,
+		--separator = false,
 		offsets = {
-			filetype = "neo-tree",
-			text = "Neotree",
-			padding = 30,
+			{
+				filetype = "neo-tree",
+				text = "Neotree Explorer",
+			},
 		},
-		separator_style = { "", "" },
+		--separator_style = { "", "" },
 		always_show_bufferline = true,
 		hover = {
 			enabled = true,
@@ -196,10 +103,12 @@ require("nvim-treesitter.configs").setup({
 		additional_vim_regex_highlighting = true,
 	},
 })
---[[ colorizer.nvim ]]
+--[[ colorizer setup ]]
 require("colorizer").setup()
+
 --[[ comment.nvim setup ]]
 require("Comment").setup()
+
 --[[ indent-blankline.nvim setup ]]
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
@@ -207,7 +116,10 @@ vim.opt.listchars:append("eol:↴")
 require("indent_blankline").setup({
 	show_end_of_line = true,
 	space_char_blankline = " ",
+	show_current_context = true,
+	show_current_context_start = true,
 })
+
 --[[ telescope config ]]
 require("telescope").setup({
 	extensions = {
@@ -251,6 +163,8 @@ require("telescope").load_extension("frecency")
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("project")
+
+--[[ coq 3rd party configs ]]
 require("coq_3p")({
 	{ src = "nvimlua", short_name = "nLUA", conf_only = true },
 	{ src = "vimtex", short_name = "vTEX" },
@@ -263,10 +177,10 @@ require("coq_3p")({
 		unsafe = { "rm", "poweroff", "mv", "rmdir", "reboot" },
 	},
 })
+
+--[[ Utilities borrowed from mini.nvim ]]
 require("mini.sessions").setup()
 require("mini.pairs").setup()
 require("mini.align").setup()
-require("mini.cursorword").setup({
-	delay = 3000,
-})
+require("mini.cursorword").setup({ delay = 3000 })
 require("mini.surround").setup()

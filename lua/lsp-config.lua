@@ -7,15 +7,14 @@ local coq = require("coq")
 local diagnostic = require("vim.diagnostic")
 local keymap = require("vim.keymap")
 local vlsp = require("vim.lsp")
-local vim = vim
 
--- Mappings.
+--[[ Mappings. ]]
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
-keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
+keymap.set("n", "<space>e", diagnostic.open_float, opts)
+keymap.set("n", "[d", diagnostic.goto_prev, opts)
+keymap.set("n", "]d", diagnostic.goto_next, opts)
+keymap.set("n", "<space>q", diagnostic.setloclist, opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
