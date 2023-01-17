@@ -36,6 +36,7 @@ return require("packer").startup({
 		use("norcalli/nvim-colorizer.lua")
 		use("ellisonleao/glow.nvim")
 		use("lukas-reineke/indent-blankline.nvim")
+    use("arkav/lualine-lsp-progress")
 		use("numToStr/Comment.nvim")
 		use("folke/which-key.nvim")
 		use("williamboman/mason.nvim")
