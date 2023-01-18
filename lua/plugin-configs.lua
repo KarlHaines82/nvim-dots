@@ -51,7 +51,7 @@ require("lualine").setup({
 	extensions = {
 		"neo-tree",
   },
-  options = {	
+  options = {
     disabled_filetypes = {
       "alpha",
       "dashboard",
@@ -114,6 +114,8 @@ require("Comment").setup()
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
+vim.g.indent_blankline_use_treesitter = true
+vim.g.indent_blankline_filetype_exclude = {"neo-tree"}
 require("indent_blankline").setup({
 	show_end_of_line = true,
 	space_char_blankline = " ",

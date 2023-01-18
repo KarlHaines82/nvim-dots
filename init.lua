@@ -6,6 +6,9 @@ require("keymaps")        -- Keymaps
 require("plugin-configs") -- Plugin configs
 require("lsp-config")     -- LSP config
 
+--[[ turn on filetype plugin ]]
+vim.cmd([[filetype plugin on]])
+
 --[[ Load colorscheme ]]
 vim.cmd([[colorscheme tokyonight-storm]])
 require("lualine").setup({ options = { theme = "tokyonight" } })
@@ -23,8 +26,8 @@ end
 local run_pcompile = function()
 	vim.cmd([[luafile %]])
 	packer.compile()
-	require("lualine").refresh()
   print("PackerCompile complete")
+	vim.cmd([[source $MYVIMRC]])
 end
 vim.api.nvim_create_autocmd("BufWritePost", {
 	callback = run_pcompile,
