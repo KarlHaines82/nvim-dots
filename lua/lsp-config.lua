@@ -8,6 +8,20 @@ local diagnostic = require("vim.diagnostic")
 local keymap = require("vim.keymap")
 local vlsp = require("vim.lsp")
 
+--[[ coq 3rd party configs ]]
+require("coq_3p")({
+	{ src = "nvimlua", short_name = "nLUA", conf_only = true },
+	{ src = "vimtex", short_name = "vTEX" },
+	{
+		src = "repl",
+		sh = "zsh",
+		shell = { p = "python", n = "node", pl = "perl", rs = "rust", r = "ruby", l = "lua" },
+		max_lines = 99,
+		deadline = 500,
+		unsafe = { "rm", "poweroff", "mv", "rmdir", "reboot" },
+	},
+})
+
 --[[ Mappings. ]]
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }

@@ -42,7 +42,7 @@ require("dressing").setup({
 					},
 				}
 			end
-		end,
+		end
 	},
 })
 
@@ -61,7 +61,7 @@ require("lualine").setup({
 		lualine_c = {
 			'lsp_progress'
 		}
-	},
+	}
 })
 
 --[[ befferline setup ]]
@@ -166,20 +166,6 @@ require("telescope").load_extension("frecency")
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("project")
-
---[[ coq 3rd party configs ]]
-require("coq_3p")({
-	{ src = "nvimlua", short_name = "nLUA", conf_only = true },
-	{ src = "vimtex", short_name = "vTEX" },
-	{
-		src = "repl",
-		sh = "zsh",
-		shell = { p = "python", n = "node", pl = "perl", rs = "rust", r = "ruby", l = "lua" },
-		max_lines = 99,
-		deadline = 500,
-		unsafe = { "rm", "poweroff", "mv", "rmdir", "reboot" },
-	},
-})
 
 --[[ Utilities borrowed from mini.nvim ]]
 require("mini.sessions").setup()

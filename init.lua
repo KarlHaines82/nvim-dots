@@ -5,6 +5,7 @@ require("options")        -- Options
 require("keymaps")        -- Keymaps
 require("plugin-configs") -- Plugin configs
 require("lsp-config")     -- LSP config
+local vim = vim
 
 --[[ turn on filetype plugin ]]
 vim.cmd([[filetype plugin on]])
@@ -21,7 +22,7 @@ local packer = require("packer")
 local run_psync = function()
 	vim.cmd([[luafile %]])
 	packer.sync()
-	require("lualine").refresh()
+  vim.cmd([[source $MYVIMRC]])
 end
 local run_pcompile = function()
 	vim.cmd([[luafile %]])
