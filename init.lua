@@ -24,6 +24,7 @@ local run_pcompile = function()
 	vim.cmd([[luafile %]])
 	packer.compile()
 	require("lualine").refresh()
+  print("PackerCompile complete")
 end
 vim.api.nvim_create_autocmd("BufWritePost", {
 	callback = run_pcompile,

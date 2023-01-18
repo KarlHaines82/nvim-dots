@@ -24,15 +24,7 @@ require("neo-tree").setup({
 	},
 })
 
---[[ glow setup ]]
-require("glow").setup({
-	style = "dark",
-	border = "rounded",
-	width_ratio = 0.7,
-	height_ratio = 0.7,
-})
-
---[[ dressing setup ]]
+--[[ dressing setup stuff ]]
 require("dressing").setup({
 	input = {
 		-- used to override format_item. see :help dressing-format
@@ -56,10 +48,14 @@ require("dressing").setup({
 
 --[[ lualine setup ]]
 require("lualine").setup({
-	options = {
-		extensions = {
-			"neo-tree",
-		},
+	extensions = {
+		"neo-tree",
+  },
+  options = {	
+    disabled_filetypes = {
+      "alpha",
+      "dashboard",
+    },
   },
 	sections = {
 		lualine_c = {

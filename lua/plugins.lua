@@ -15,9 +15,9 @@ return require("packer").startup({
 	function(use)
 		use("wbthomason/packer.nvim")
 		use("nvim-lualine/lualine.nvim")
-		use("navarasu/onedark.nvim")
-		use("Mofiqul/dracula.nvim")
-		use("rebelot/kanagawa.nvim")
+		use({ "navarasu/onedark.nvim", opt = true })
+		use({ "Mofiqul/dracula.nvim", opt = true })
+		use({ "rebelot/kanagawa.nvim", opt = true })
 		use({ "folke/tokyonight.nvim", options = { style = "storm" } })
 		use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 		use("neovim/nvim-lspconfig")
@@ -34,7 +34,18 @@ return require("packer").startup({
 		use("nvim-telescope/telescope-file-browser.nvim")
 		use("stevearc/dressing.nvim")
 		use("norcalli/nvim-colorizer.lua")
-		use("ellisonleao/glow.nvim")
+		use({
+      "ellisonleao/glow.nvim", 
+      cmd = "Glow",
+      config = function()
+        require("glow").setup({
+          style = "dark",
+          border = "rounded",
+          width_ratio = 0.7,
+          height_ratio = 0.7,
+        })
+      end
+    })
 		use("lukas-reineke/indent-blankline.nvim")
     use("arkav/lualine-lsp-progress")
 		use("numToStr/Comment.nvim")
