@@ -31,14 +31,14 @@ wk.register({
     n =      { "<cmd>bnext<cr>",                  "Next buffer" },
     p =      { "<cmd>bprev<cr>",                  "Previous buffer" },
   },
-  p =        {
-    name =     "Packer functions",
-    p =      { "<cmd>PackerStatus<cr>",           "Run PackerStatus" },
-    s =      { "<cmd>PackerSync<cr>",             "Run PackerSync" },
-    i =      { "<cmd>PackerInstall<cr>",          "Run PackerInstall" },
-    c =      { "<cmd>PackerClean<cr>",            "Run PackerClean" },
-    x =      { "<cmd>PackerCompile<cr>",          "Run PackerCompile" },
-  },
+  -- p =        {
+  --   name =     "Packer functions",
+  --   p =      { "<cmd>PackerStatus<cr>",           "Run PackerStatus" },
+  --   s =      { "<cmd>PackerSync<cr>",             "Run PackerSync" },
+  --   i =      { "<cmd>PackerInstall<cr>",          "Run PackerInstall" },
+  --   c =      { "<cmd>PackerClean<cr>",            "Run PackerClean" },
+  --   x =      { "<cmd>PackerCompile<cr>",          "Run PackerCompile" },
+  -- },
   t =        {
     name =     "Telescope",                           -- optional group name
     c =      { "<cmd>Telescope colorscheme<cr>",  "Colorscheme browser" },

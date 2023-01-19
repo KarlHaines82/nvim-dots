@@ -17,6 +17,7 @@ require("neo-tree").setup({
 		width = 30,
 	},
 	filesystem = {
+    follow_current_file = true,
 		filtered_items = {
 			visible = true,
 			hide_dotfiles = false,
