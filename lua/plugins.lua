@@ -15,10 +15,21 @@ return require("packer").startup({
 	function(use)
 		use("wbthomason/packer.nvim")
 		use("nvim-lualine/lualine.nvim")
+    use({
+      "xiyaowong/nvim-transparent",
+      config = function()
+        require("transparent").setup({ enable = vim.g.transparent })
+      end
+    })
 		use({ "navarasu/onedark.nvim", opt = true })
 		use({ "Mofiqul/dracula.nvim", opt = true })
 		use({ "rebelot/kanagawa.nvim", opt = true })
-		use({ "folke/tokyonight.nvim", options = { style = "storm" } })
+		use({
+      "folke/tokyonight.nvim",
+      config = function()
+        require("tokyonight").setup({ transparent = true, style = "storm" })
+      end
+    })
 		use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 		use("neovim/nvim-lspconfig")
 		use({ "ms-jpq/coq_nvim", branch = "coq" })

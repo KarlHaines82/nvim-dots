@@ -5,46 +5,16 @@ require("options")        -- Options
 require("keymaps")        -- Keymaps
 require("plugin-configs") -- Plugin configs
 require("lsp-config")     -- LSP config
+require("autocmds")
 local vim = vim
-
 --[[ turn on filetype plugin ]]
 vim.cmd([[filetype plugin on]])
 
+--[[ Set a transparent background ]]
+vim.g.transparent = true
 --[[ Load colorscheme ]]
-vim.cmd([[colorscheme tokyonight-storm]])
+vim.cmd([[colorscheme tokyonight]])
 require("lualine").setup({ options = { theme = "tokyonight" } })
-
-local neocfg = vim.fn.stdpath("config")
-local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
-local packer = require("packer")
-
---[[ Automatically source and run PackerCompile/PackerSync on save (of init.lua or plugins.lua) ]]
-local run_psync = function()
-	vim.cmd([[luafile %]])
-	packer.sync()
-  vim.cmd([[source $MYVIMRC]])
-end
-local run_pcompile = function()
-	vim.cmd([[luafile %]])
-	packer.compile()
-  print("PackerCompile complete")
-	vim.cmd([[source $MYVIMRC]])
-end
-vim.api.nvim_create_autocmd("BufWritePost", {
-	callback = run_pcompile,
-	group = packer_group,
-	pattern = neocfg .. "/init.lua",
-})
-vim.api.nvim_create_autocmd("BufWritePost", {
-	callback = run_pcompile,
-	group = packer_group,
-	pattern = neocfg .. "/lua/*",
-})
-vim.api.nvim_create_autocmd("BufWritePost", {
-	callback = run_psync,
-	group = packer_group,
-	pattern = neocfg .. "/lua/plugins.lua",
-})
 
 --[[ dash config, alpha.nvim ]]
 local alpha = require("alpha")
@@ -98,15 +68,6 @@ null_ls.setup({
 		null_ls.builtins.code_actions.shellcheck,
 	},
 	on_attach = format_buf,
-})
--- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
-vim.api.nvim_create_autocmd("FileType",
-{
-	pattern = "zsh",
-	callback = function()
-		-- let treesitter use bash highlight for zsh files as well
-		require("nvim-treesitter.highlight").attach(0, "bash")
-	end,
 })
 -- Bring up the dashboard
 vim.cmd([[autocmd User AlphaReady echo 'ready']])
