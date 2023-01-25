@@ -6,12 +6,12 @@ require("keymaps")        -- Keymaps
 require("plugin-configs") -- Plugin configs
 require("lsp-config")     -- LSP config
 require("autocmds")
-local vim = vim
+--local vim = vim
 --[[ turn on filetype plugin ]]
 vim.cmd([[filetype plugin on]])
 
 --[[ Set a transparent background ]]
-vim.g.transparent = true
+vim.g.transparent = false
 --[[ Load colorscheme ]]
 vim.cmd([[colorscheme tokyonight]])
 require("lualine").setup({ options = { theme = "tokyonight" } })

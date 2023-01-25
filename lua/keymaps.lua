@@ -41,6 +41,7 @@ wk.register({
   -- },
   t =        {
     name =     "Telescope",                           -- optional group name
+    b =      { "<cmd>Telescope buffers<cr>",      "Buffer picker" },
     c =      { "<cmd>Telescope colorscheme<cr>",  "Colorscheme browser" },
     f =        "files",
     fb =     { "<cmd>Telescope file_browser<cr>", "File/folder browser" },
@@ -57,7 +58,7 @@ wk.register({
     --   o = { "<cmd>PosLoad<cr>",                "Session open" },
     --   m = { "<cmd>PosMigrate<cr>",             "Session migrate" },
     --   s = { "<cmd>PosSave<cr>",                "Session save" },
-    -- },
+    -- }-,
     v =      { "<cmd>Telescope vim_options<cr>",  "vim options" },
   },
   q =        {

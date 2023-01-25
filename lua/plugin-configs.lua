@@ -11,7 +11,7 @@ require("neo-tree").setup({
 		},
 	},
 	source_selector = {
-		winbar = true,
+		winbar = false,
 	},
 	window = {
 		width = 30,
@@ -147,11 +147,11 @@ require("telescope").setup({
 		},
 		project = {
 			base_dirs = {
-				{ path = "~/Dev/qtile" },
-				{ path = "~/Dev/qtile-extras" },
-				{ path = "~/.config/nvim", max_depth = 2 },
-				{ path = "~/.config/lvim", max_depth = 2 },
+				{ path = "~/Dev" },
 				{ path = "~/.config/qtile" },
+				{ path = "~/.config/nvim" },
+				{ path = "~/.config/kitty" },
+				{ path = "~/.config/wezterm" },
 			},
 			hidden_files = true, -- default: false
 			theme = "dropdown",
