@@ -28,6 +28,7 @@ lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["e"] = { "<cmd>Neotree toggle<cr>", "Neo-tree file explorer" }
+lvim.builtin.which_key.mappings["U"] = { "<cmd>Telescope symbols<cr>", "Telescope symbol browser" }
 -- setup nedvide if its running
 require("neovide")
 -- set a colorscheme and transparency
@@ -43,12 +44,12 @@ lvim.builtin.terminal.active = true
 -- lvim.builtin.nvimtree.setup.view.side = "left"
 -- lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 -- lvim.builtin.nvimtree.respect_buf_cwd = true
+-- lvim.builtin.telescope.builtin.symbols{ sources = { "emoji", "kaomoji", "gitmoji" } }
 lvim.builtin.nvimtree.enable = false
 lvim.builtin.lualine.options.icons_enabled = true
 lvim.builtin.lualine.options.section_separators = { left = " ", right = " " }
 lvim.builtin.lualine.options.component_separators = { left = " ", right = " " }
 lvim.builtin.bufferline.options = { separator_style = { " ", " " } }
-lvim.builtin.bufferline.options.separator = " "
 lvim.builtin.bufferline.separator = ""
 lvim.builtin.bufferline.options.offsets = {
 	{
@@ -108,6 +109,17 @@ lvim.plugins = {
 	{
 		"folke/trouble.nvim",
 		cmd = "TroubleToggle",
+	},
+	{
+		"nvim-telescope/telescope-symbols.nvim",
+		config = function()
+			require("telescope").setup({
+				extensions = {
+					symbols = { sources = { "emoji", "kaomoji", "gitmoji" } },
+				},
+			})
+		end,
+		lazy = false,
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
