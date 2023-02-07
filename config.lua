@@ -38,26 +38,21 @@ require("tokyonight").setup({
 })
 lvim.colorscheme = "tokyonight"
 lvim.builtin.lualine.options.theme = "tokyonight"
-
 lvim.builtin.alpha.active = false
 lvim.builtin.terminal.active = true
--- lvim.builtin.nvimtree.setup.view.side = "left"
--- lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
--- lvim.builtin.nvimtree.respect_buf_cwd = true
--- lvim.builtin.telescope.builtin.symbols{ sources = { "emoji", "kaomoji", "gitmoji" } }
 lvim.builtin.nvimtree.enable = false
 lvim.builtin.lualine.options.icons_enabled = true
-lvim.builtin.lualine.options.section_separators = { left = " ", right = " " }
-lvim.builtin.lualine.options.component_separators = { left = " ", right = " " }
-lvim.builtin.bufferline.options = { separator_style = { " ", " " } }
-lvim.builtin.bufferline.separator = ""
-lvim.builtin.bufferline.options.offsets = {
-	{
-		filetype = "neo-tree",
-		text = "Neo-tree",
+lvim.builtin.lualine.options.component_separators = { left = "", right = "" }
+lvim.builtin.lualine.options.section_separators = { left = "", right = "" }
+lvim.builtin.bufferline.options = {
+	offsets = {
+		{
+			filetype = "neo-tree",
+			text = "Neo-tree",
+		},
 	},
+	separator_style = { "", "" },
 }
-
 -- Automatically install missing parsers when entering buffer
 lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -149,6 +144,23 @@ lvim.plugins = {
 				},
 				buffers = { follow_current_file = true },
 			})
+		end,
+		lazy = false,
+	},
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+		lazy = false,
+	},
+	{
+		"echasnovski/mini.nvim",
+		config = function()
+			require("mini.surround").setup()
+			if vim.g.neovide ~= true then
+				require("mini.animate").setup()
+			end
 		end,
 		lazy = false,
 	},
