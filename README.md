@@ -9,9 +9,9 @@ mind to it.
 
 ## Screenshots
 Here are a few screenshots for you unixporn lovers like me!
-![screenshot.png](screenshot.png screenshot.png)
+![screenshot.png](screenshot.png)
 Aother...
-![screenshot2.png](screenshot2.png screenshot2.png)
+![screenshot2.png](screenshot2.png)
 
 ## Thanks for visiting
 Thank you for visiting my little haven and taking your valuable time 
