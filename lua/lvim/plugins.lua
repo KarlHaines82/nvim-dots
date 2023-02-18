@@ -76,7 +76,7 @@ local core_plugins = {
 	{
 		"hrsh7th/cmp-cmdline",
 		lazy = false,
-		enabled = lvim.builtin.cmp and lvim.builtin.cmp.cmdline.enable or false,
+		enabled = true,
 	},
 	{
 		"L3MON4D3/LuaSnip",
@@ -115,7 +115,7 @@ local core_plugins = {
 		config = function()
 			require("lvim.core.autopairs").setup()
 		end,
-		enabled = lvim.builtin.autopairs.active,
+		enabled = true,
 	},
 
 	-- Treesitter
@@ -283,7 +283,8 @@ local core_plugins = {
 	-- SchemaStore
 	{
 		"b0o/schemastore.nvim",
-		lazy = true,
+		lazy = false,
+		enabled = true,
 	},
 
 	{
@@ -298,7 +299,10 @@ local core_plugins = {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
-			require("lvim.core.indentlines").setup()
+			require("lvim.core.indentlines").setup({
+				show_end_of_line = true,
+				space_char_blankline = " ",
+			})
 		end,
 		event = "User FileOpened",
 		enabled = lvim.builtin.indentlines.active,
